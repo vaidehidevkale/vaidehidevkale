@@ -1,0 +1,70 @@
+//exp 1
+/*Implement a class Complex which represents the Complex Number data
+type.
+IMPLEMENT THE FOLLOWING -
+1. Constructor (including a default constructor which creates the complex number 0+0i).
+2. Overload operator+ to add two complex numbers.
+3. Overload operator* to multiply two complex numbers.
+4. Overload operators << and >> to print and read Complex Numbers.*/
+
+#include<iostream>
+using namespace std;
+
+class complex
+{
+private:
+int real, img;
+public:
+complex()
+{
+real=0;
+img = 0;
+}
+void get( int num1, int num2 )
+{
+real = num1;
+img = num2;
+}
+void display()
+{
+cout<<real<<"+"<<img<<"i"<<endl;
+}
+complex operator + (complex);
+complex operator * (complex);
+};
+
+complex complex::operator + (complex c1)
+{
+complex temp;
+temp.real = real + c1.real;
+temp.img = img + c1.img;
+return temp;
+}
+
+complex complex::operator * (complex c2)
+{
+complex tmp;
+tmp.real = real * c2.real - img * c2.img;
+tmp.img = real * c2.img + img * c2.img;
+return tmp;
+}
+
+int main()
+{
+complex num1;
+complex num2;
+complex sum,mult;
+num1.get(34,45);
+num2.get(67,35);
+cout<<"first number is "<<endl;
+num1.display();
+cout<<"second number is "<<endl;
+num2.display();
+sum = num1 + num2;
+mult = num1 * num2 ;
+cout<<"addition of the numbers is "<<endl;
+sum.display();
+cout<<"multiplication of the numbers is "<<endl;
+mult.display();
+return 0;
+}
